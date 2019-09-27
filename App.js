@@ -8,5 +8,12 @@ export const add=(x,y)=>{
 }
 
 export const removeSNames = names =>{
-    return null;
+   let newNames = names; 
+   names.forEach(name=>{
+       if(name.toLowerCase().charAt(0)=='s'){
+           const index= newNames.indexOf(name);
+           newNames.splice(index, 1);
+       }
+   })
+   return newNames;
 }

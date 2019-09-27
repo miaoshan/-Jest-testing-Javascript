@@ -1,7 +1,4 @@
-import {
-    hello,
-    add
-} from './App';
+import {hello, add, removeSNames} from './App';
 
 describe('hello', () => {
     it('should output hello', () => {
@@ -27,6 +24,24 @@ describe('add', () => {
     });
 });
 
+describe('removeSNames', ()=>{
+    it('should remove all s names', ()=>{
+     const names =['Scott', "Lucy", "Sindy"];
+     expect(removeSNames(names)).not.toContain('Scott');
+     expect(removeSNames(names)).not.toContain('Sindy');
+
+    });
+    it('should not remove other names', ()=>{
+     const names =['Scott', "Lucy", "Kirsty"];
+     expect(removeSNames(names)).toContain('Lucy');
+     expect(removeSNames(names)).toContain('Kirsty');
+    });
+    it('should account for cass', ()=>{
+     const names =['Scott', "Lucy", "Kirsty", "Sabrina"];
+     expect(removeSNames(names)).not.toContain('Scott');
+     expect(removeSNames(names)).not.toContain('Sabrina');
+    });
+})
 
 
 

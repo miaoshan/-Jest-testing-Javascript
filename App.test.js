@@ -1,4 +1,4 @@
-import {hello, add, removeSNames, total} from './App';
+import {hello,removeSNames, total} from './App';
 
 describe('hello', () => {
     it('should output hello', () => {
@@ -30,27 +30,39 @@ test('Fake Test', () => {
     expect(true).toBeTruthy
 })
 
+// jest mock function (use jest.fn() to create a fake function)
+const add = jest.fn((x,y)=> 3);   
+
+
 // unit test 
-describe('add', () => {
-    it('should add two numbers', () => {
-        expect(add(1, 2)).toBe(3);
-        expect(add(-2, 2)).toBe(0);
-        expect(add(0, 2)).toBe(2);
-        expect(add(-3, -2)).toBe(-5);
-    });
-    it('shoudl not add strings', () => {
-        expect(add(2, '2')).toBe(null);
-    });
-    it('shoudl not add objects', () => {
-        expect(add(2, {})).toBe(null);
-    });
-    it('shoudl not add arrays', () => {
-        expect(add(2, [])).toBe(null);
-    });
-});
+  test('add', ()=>{
+      expect(add(1,2)).toBe(3);
+      expect(add).toHaveBeenCalledTimes(1);
+      expect(add).toHaveBeenCalledWith(1,2);
+
+  })
+
+
+// describe('add', () => {
+//     it('should add two numbers', () => {
+//         expect(add(1, 2)).toBe(3);
+//         expect(add(-2, 2)).toBe(0);
+//         expect(add(0, 2)).toBe(2);
+//         expect(add(-3, -2)).toBe(-5);
+//     });
+//     it('shoudl not add strings', () => {
+//         expect(add(2, '2')).toBe(null);
+//     });
+//     it('shoudl not add objects', () => {
+//         expect(add(2, {})).toBe(null);
+//     });
+//     it('shoudl not add arrays', () => {
+//         expect(add(2, [])).toBe(null);
+//     });
+// });
 
 
 // integration test. not only testing the functionality of total, also testing the functionality of add.
- test('total', ()=>{
-    expect(total(5,29)).toBe('£34');
- })
+//  test('total', ()=>{
+//     expect(total(5,29)).toBe('£34');
+//  })
